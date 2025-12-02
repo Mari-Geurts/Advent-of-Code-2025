@@ -1,0 +1,11 @@
+`L`eft goes towards lower numbers
+`R`ight goes towards higher numbers
+`D`istance indicates how many `clicks` the dial rotates
+
+
+Exceptions:
+- Dial is circle, rotating left from `0` points it at `99`
+
+--------
+
+Starting point is `50`
