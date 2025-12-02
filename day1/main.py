@@ -10,10 +10,14 @@ currentValue = startInt
 
 with open("example.txt", 'r') as file:
     #file processing
-    for line in file.readlines():
-        print(line, end='') 
-
-
+    listGuide = file.readlines()
+    print(f"Working list: {listGuide}")
+    for direction in listGuide:
+        #print(f"Currently facing: {direction[0]}")
+        if direction[0] == 'L':
+            print(f"LEFT: {direction[0]}, {direction[1:]}")
+        elif direction[0] == 'R':
+            print(f"RIGHT: {direction[0]}, {direction[1:]}")
 
 # Test print
-print(f"The dial is rotated {direction} {distance} times and points at {currentValue}")
+#print(f"The dial is rotated {direction} {distance} times and points at {currentValue}")
