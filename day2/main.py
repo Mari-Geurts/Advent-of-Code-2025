@@ -34,11 +34,11 @@ with open("input.txt", "r") as file:
                         #print(f"{i} is {indexLength} long. It begins with {str(i)[:int(indexLength//2)]} and ends with {str(i)[int(indexLength//2):]}")
                         invalidSum += i
 
-                    else: #if it is not an invalid even number, we don't need to do anything with it
+                    else: #if left half != right half, proceed another method to check if invalid
                         
                         pass    
 
-                else: #must be odd value, so skip this index
+                else: #must be odd value, proceed another method to check if invalid
                     
                     pass
                 
