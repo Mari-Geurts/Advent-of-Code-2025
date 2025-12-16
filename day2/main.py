@@ -6,7 +6,7 @@
 #Find all invalid ids, and add them up. [CHECK]
 import re
 
-with open("input.txt", "r") as file:
+with open("example.txt", "r") as file:
     #file processing
 
     document = file.readline().rstrip()
@@ -31,17 +31,19 @@ with open("input.txt", "r") as file:
                 if indexLength % 2 == 0: # Indicates that there is an even amount of characters, Not all are invalid; we have to determine by splitting down the middle and checking if they're == 
 
                     if str(i)[:half] == str(i)[half:]: # If first half and last half match, then they are invalid
-                        #print(f"{i} is {indexLength} long. It begins with {str(i)[:int(indexLength//2)]} and ends with {str(i)[int(indexLength//2):]}")
+                        print(f"{i} is {indexLength} long. It begins with {str(i)[:int(indexLength//2)]} and ends with {str(i)[int(indexLength//2):]}")
                         invalidSum += i
 
                     else: #if left half != right half, proceed another method to check if invalid
                         
                         pass    
 
+                
                 else: #must be odd value, proceed another method to check if invalid
                     
                     pass
                 
             counter = 1
-    print(f"Final sum is {invalidSum}")
+    #print(f"Final sum is {invalidSum}")
+
 
