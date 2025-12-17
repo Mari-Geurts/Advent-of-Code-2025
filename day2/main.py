@@ -10,7 +10,7 @@
 """
 import re
 
-with open("testInput.txt", "r") as file:
+with open("example.txt", "r") as file:
 
     document = file.readline().rstrip()
     listIds = re.split("[-,]" ,document)
@@ -39,28 +39,48 @@ with open("testInput.txt", "r") as file:
                         workingVarSlice = []  
 
                         if str(workingId)[:half-i] == str(workingId)[half+i:]: # matches
+                            """print("                       ")
+                            print(f"STEP 1: If {str(workingId)[:half-i]} equals {str(workingId)[half+i:]} then we proceed")
+                            print("- - - - - - - - - - - -")"""
+                            
+                            for n in range(0,indexLength,half-i): 
+                                """print("                       ")
+                                print(f"STEP 2: for {n} in range(0,{indexLength},{half-i})")
+                                print(f"We append {str(workingId)[n:n+half-i]} to the list {workingVarSlice}")
+                                print("- - - - - - - - - - - -")"""
 
-                            for n in range(0,indexLength,half-i):
                                 workingVarSlice.append(str(workingId)[n:n+half-i])
                         
                             for chunk in workingVarSlice:
+                                """print("                       ")
+                                print(f"STEP 3: for chunk `{chunk}` in {workingVarSlice}")
+                                print("- - - - - - - - - - - -")"""
                                 
+
                                 if chunk == workingVarSlice[0]:
                                     isInvalid = True
+                                    """print("                       ")
+                                    print(f"STEP 4: if {chunk} is equal to the start of our list {workingVarSlice[0]}")
+                                    print(f"We set isInvalid to {isInvalid}")
+                                    print("- - - - - - - - - - - -")"""
+                                    
                                 
                                 else:
                                     isInvalid = False
                                     break
+
                             if isInvalid:
                                 print(f"Current value invalid, adding {workingId}.")
                                 invalidSum+=workingId
-                    
+                                break
+                        
                     else: #must be odd length, proceed another method to check if invalid
                         divideBy = indexLength-1
 
                         while divideBy > 1:
                             if indexLength % divideBy == 0:
-                                print(f"No denominator: {divideBy}")
+                                pass
+                                #print(f"No denominator: {divideBy}")
                                 
                                 #createWorkingVarslice based on divideBy
                             else:
