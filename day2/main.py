@@ -5,12 +5,12 @@
 - Increment through the range [CHECK]
 - invalid ids are when the range has repeated digits. ie `55` `6464` and `123123` [CHECK]
 - Invalid IDs now include any repeated patterns, find even length first [CHECK]
- - Find odd length ones [ ]
+ - Find odd length Invalid IDs [ ]
 - Find all invalid ids and add them up. [ ]
 """
 import re
 
-with open("example.txt", "r") as file:
+with open("testInput.txt", "r") as file:
 
     document = file.readline().rstrip()
     listIds = re.split("[-,]" ,document)
@@ -32,10 +32,12 @@ with open("example.txt", "r") as file:
                 indexLength = len(str(workingId))
                 half = int(indexLength//2)
                 
-                if indexLength % 2 == 0: # Indicates that there is an even amount of characters, 
-                    #Not all are invalid; we have to determine by splitting down the middle and checking if they're == 
-                    workingVarSlice = []    
-                    for i in range(0,half): # Meaning we stop at the end of the length
+                for i in range(0,half): # Meaning we stop at the end of the length
+                    
+                    if indexLength % 2 == 0: # Indicates even amount of characters Not all are invalid. 
+                        #We have to determine by splitting down the middle and checking if they're == 
+                        workingVarSlice = []  
+
                         if str(workingId)[:half-i] == str(workingId)[half+i:]: # matches
 
                             for n in range(0,indexLength,half-i):
@@ -52,11 +54,20 @@ with open("example.txt", "r") as file:
                             if isInvalid:
                                 print(f"Current value invalid, adding {workingId}.")
                                 invalidSum+=workingId
-                
-                else: #must be odd length, proceed another method to check if invalid
                     
-                    pass
+                    else: #must be odd length, proceed another method to check if invalid
+                        divideBy = indexLength-1
+
+                        while divideBy > 1:
+                            if indexLength % divideBy == 0:
+                                print(f"No denominator: {divideBy}")
+                                
+                                #createWorkingVarslice based on divideBy
+                            else:
+                                pass
+                            divideBy -=1
+                                    
                 
-    print(f"Final sum is {invalidSum}")
+    #print(f"Final sum is {invalidSum}")
 
 
