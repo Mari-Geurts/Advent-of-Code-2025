@@ -40,31 +40,15 @@ with open("testInput.txt", "r") as file:
                          
 
                         if str(workingId)[:half-i] == str(workingId)[half+i:]: # matches
-                            """print("                       ")
-                            print(f"STEP 1: If {str(workingId)[:half-i]} equals {str(workingId)[half+i:]} then we proceed")
-                            print("- - - - - - - - - - - -")"""
                             
                             for n in range(0,indexLength,half-i): 
-                                """print("                       ")
-                                print(f"STEP 2: for {n} in range(0,{indexLength},{half-i})")
-                                print(f"We append {str(workingId)[n:n+half-i]} to the list {workingVarSlice}")
-                                print("- - - - - - - - - - - -")"""
 
                                 workingVarSlice.append(str(workingId)[n:n+half-i])
                         
                             for chunk in workingVarSlice:
-                                """print("                       ")
-                                print(f"STEP 3: for chunk `{chunk}` in {workingVarSlice}")
-                                print("- - - - - - - - - - - -")"""
-                                
 
                                 if chunk == workingVarSlice[0]:
                                     isInvalid = True
-                                    """print("                       ")
-                                    print(f"STEP 4: if {chunk} is equal to the start of our list {workingVarSlice[0]}")
-                                    print(f"We set isInvalid to {isInvalid}")
-                                    print("- - - - - - - - - - - -")"""
-                                    
                                 
                                 else:
                                     isInvalid = False
@@ -76,48 +60,50 @@ with open("testInput.txt", "r") as file:
                                 break
                         
                     else: #must be odd length, proceed another method to check if invalid
-                        breakpoint()
+                        #breakpoint()
                         if str(workingId)[:half-i+1] == str(workingId)[half+i:]: # both halves matched
                             
-                            """
                             print(f"STEP 1: If {str(workingId)[:half-i+1]} equals {str(workingId)[half+i:]} then we proceed")
                             print("                       ")
-                            print("- - - - - - - - - - - -")"""
-                            for n in range(0,indexLength,half-i+1): # We iterate through the workingId and append to workingVarSlice
-                                """
-                                print("                       ")
+                            print("- - - - - - - - - - - -")
+
+                            for n in range(0,indexLength+1,half-i+1): # We iterate through the workingId and append to workingVarSlice
+                                
                                 print(f"STEP 2: for {n} in range(0,{indexLength},{half-i+1})")
                                 print(f"We append {str(workingId)[n:n+half-i+1]} to the list {workingVarSlice}")
-                                print("- - - - - - - - - - - -")"""
+                                print("                       ")
+                                print("- - - - - - - - - - - -")
 
                                 workingVarSlice.append(str(workingId)[n:n+half-i+1])
 
-                                for chunk in workingVarSlice: # for every chunk within the slice
-                                    """
-                                    print(f"STEP 3: for chunk `{chunk}` in {workingVarSlice}")
-                                    print("                       ")
-                                    print("- - - - - - - - - - - -")"""
+                            for chunk in workingVarSlice: # for every chunk within the slice
+                                
+                                print(f"STEP 3: for chunk `{chunk}` in {workingVarSlice}")
+                                print("                       ")
+                                print("- - - - - - - - - - - -")
 
-                                    if chunk == workingVarSlice[0]: # We check if all chunks are equivalent, makking it invalid
-                                        isInvalid = True
-                                        """
-                                        print(f"STEP 4: if {chunk} is equal to the start of our list {workingVarSlice[0]}")
-                                        print(f"We set isInvalid to {isInvalid}")
-                                        print("                       ")
-                                        print("- - - - - - - - - - - -")"""
-                                        
-
-                                    else: # If they do not match, automatically makes them valid
-                                        isInvalid = False
-                                        print(f"WorkingId is valid: {workingId}")
-                                        break
-                                        
+                                if chunk == workingVarSlice[0]: # We check if all chunks are equivalent, makking it invalid
+                                    isInvalid = True
                                     
+                                    print(f"STEP 4: if {chunk} is equal to the start of our list {workingVarSlice[0]}")
+                                    print(f"We set isInvalid to {isInvalid}")
+                                    print("                       ")
+                                    print("- - - - - - - - - - - -")
+                                    
+
+                                else: # If they do not match, automatically makes them valid
+                                    isInvalid = False
+                                    print(f"STEP 4: if {chunk} is NOT equal to the start of our list {workingVarSlice[0]}")
+                                    print(f"WorkingId is valid: {workingId}")
+                                    print("                       ")
+                                    print("- - - - - - - - - - - -")
+                                    break
+
                             if isInvalid:
-                                print(f"Current value invalid, adding {workingId}.")
+                                print(f"STEP 5: Current value invalid, adding {workingId}.")
                                 invalidSum+=workingId
                                 break
-                                    
+                                
                 
     print(f"Final sum is {invalidSum}")
     print("                       ")
@@ -126,3 +112,5 @@ with open("testInput.txt", "r") as file:
 # 854481776553 is too high
 
 # 26190820675 is too low
+
+# 26190824116 is too low
