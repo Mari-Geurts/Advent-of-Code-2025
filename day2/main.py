@@ -5,12 +5,12 @@
 - Increment through the range [CHECK]
 - invalid ids are when the range has repeated digits. ie `55` `6464` and `123123` [CHECK]
 - Invalid IDs now include any repeated patterns, find even length first [CHECK]
- - Find odd length Invalid IDs [ ]
-- Find all invalid ids and add them up. [ ]
+- Find odd length Invalid IDs [CHECK]
+- Find all invalid ids and add them up. [CHECK]
 """
 import re
 
-with open("testInput.txt", "r") as file:
+with open("input.txt", "r") as file:
 
     document = file.readline().rstrip()
     listIds = re.split("[-,]" ,document)
@@ -55,62 +55,36 @@ with open("testInput.txt", "r") as file:
                                     break
 
                             if isInvalid:
-                                print(f"Current value invalid, adding {workingId}.")
+                                #print(f"Current value invalid, adding {workingId}.")
                                 invalidSum+=workingId
                                 break
                         
                     else: #must be odd length, proceed another method to check if invalid
                         #breakpoint()
-                        if str(workingId)[:half-i+1] == str(workingId)[half+i:]: # both halves matched
-                            
-                            print(f"STEP 1: If {str(workingId)[:half-i+1]} equals {str(workingId)[half+i:]} then we proceed")
-                            print("                       ")
-                            print("- - - - - - - - - - - -")
 
-                            for n in range(0,indexLength+1,half-i+1): # We iterate through the workingId and append to workingVarSlice
+                        if str(workingId)[:half-i] == str(workingId)[half+i+1:]: # both halves matched
+
+                            for n in range(0,indexLength,half-i): # We iterate through the workingId and append to workingVarSlice
                                 
-                                print(f"STEP 2: for {n} in range(0,{indexLength},{half-i+1})")
-                                print(f"We append {str(workingId)[n:n+half-i+1]} to the list {workingVarSlice}")
-                                print("                       ")
-                                print("- - - - - - - - - - - -")
-
-                                workingVarSlice.append(str(workingId)[n:n+half-i+1])
+                                workingVarSlice.append(str(workingId)[n:n+half-i])
 
                             for chunk in workingVarSlice: # for every chunk within the slice
-                                
-                                print(f"STEP 3: for chunk `{chunk}` in {workingVarSlice}")
-                                print("                       ")
-                                print("- - - - - - - - - - - -")
 
                                 if chunk == workingVarSlice[0]: # We check if all chunks are equivalent, makking it invalid
-                                    isInvalid = True
-                                    
-                                    print(f"STEP 4: if {chunk} is equal to the start of our list {workingVarSlice[0]}")
-                                    print(f"We set isInvalid to {isInvalid}")
-                                    print("                       ")
-                                    print("- - - - - - - - - - - -")
-                                    
+                                    isInvalid = True                                   
 
                                 else: # If they do not match, automatically makes them valid
                                     isInvalid = False
-                                    print(f"STEP 4: if {chunk} is NOT equal to the start of our list {workingVarSlice[0]}")
-                                    print(f"WorkingId is valid: {workingId}")
-                                    print("                       ")
-                                    print("- - - - - - - - - - - -")
                                     break
 
                             if isInvalid:
-                                print(f"STEP 5: Current value invalid, adding {workingId}.")
+                                #print(f"STEP 5: Current value invalid, adding {workingId}.")
                                 invalidSum+=workingId
                                 break
                                 
                 
     print(f"Final sum is {invalidSum}")
-    print("                       ")
-    print("- - - - - - - - - - - -")
 
-# 854481776553 is too high
 
-# 26190820675 is too low
 
-# 26190824116 is too low
+# Correct answer 26202168557 !!!
