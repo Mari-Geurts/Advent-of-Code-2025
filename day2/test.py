@@ -1,10 +1,23 @@
-testLength = 10
-divideBy = testLength-1
+"""var1 = 824824824
+var2 = 824825824
+var3 = 111
+
+workingVarStr = str(var3)
+
+length = len(workingVarStr)
+divideBy = length
 
 while divideBy > 1:
-    if testLength % divideBy == 0:
-        print(f"No denominator: {divideBy}")
+    if length % divideBy == 0:
+        print(f"No denominator for {length} divided by {divideBy}")
         #createWorkingVarslice based on divideBy
     else:
-        pass
+        print(f"ligma")
+
     divideBy -=1
+"""
+
+n = 3
+div = 2
+answer = -(-n // div)
+print(answer)
